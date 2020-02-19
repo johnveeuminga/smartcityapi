@@ -2,10 +2,12 @@ var express     = require("express"),
     app         = express(),
     bodyParser  = require("body-parser"),
     mongoose    = require("mongoose");
+    cors        = require("cors")
 
 mongoose.connect("mongodb://localhost:27017/smart_city", {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 
 app.use(express.static("public"));
+app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
